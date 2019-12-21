@@ -1,0 +1,24 @@
+{
+    "name": "rexprs-rxjs",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:debug": "node --inspect node_modules/.bin/jest --watch --runInBand"
+    },
+    "author": "Kos Palchyk",
+    "license": "MIT",
+    "peerDependencies": {
+        "rxjs": "^6.5.3"
+    },
+    "devDependencies": {
+        "@types/jest": "24.0.24",
+        "jest": "24.9.0",
+        "rxjs": "^6.5.3",
+        "rxjs-marbles": "5.0.4",
+        "ts-jest": "24.2.0",
+        "typescript": "3.7.4"
+    }
+}
