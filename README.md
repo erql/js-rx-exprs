@@ -24,6 +24,10 @@ exec('AB*C', { A, B, C })
     .subscribe(console.log);
 ```
 
+Currently, the library supports `A` — capital letters that represent a single emission of a corresponding stream.
 
+And a repeat `A*` notation that will consume multiple events from the corresponding stream, until completion or until next entry in the regex matches.
+
+For regex specification and plans on vocabulary, please, see this repo https://github.com/expressions-for-reactive-streams/spec-regular-expressions
 
 (c) Kostia Palchyk
