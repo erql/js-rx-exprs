@@ -1,36 +1,64 @@
-import { AST, ASTNode } from './ast';
+import { AST, ASTNode, ExpressionNode, RepeatNode } from './ast';
 import { Dependencies } from '../src';
 import { Subject } from 'rxjs';
 
+
 function compile(ast: AST, deps: Dependencies) {
-    const subject = runThrough(ast.root);
-
-    let values = '';
-
-    return subject;
+    let log = '';
+    return runThrough(ast.root);
 
     function runThrough(ast: ASTNode) {
         const rootSubject = new Subject();
 
-        if (ast.type == 'EXPRESSION') {
-            ast.content.forEach(c => {
-                if (c.type !== 'STREAM') {
-                    return;
-                }
+        if (ast.type != 'EXPRESSION') {
+            throw 'root should be a group';
+        }
 
-                const key = c.content;
+        let currentEntryIndex = 0;
 
-                deps[key].subscribe(v => {
-                    // update log
-                    values += c;
+        const entries = ast.content.map(c => {
+            //  && c.type !== 'REPEAT'
+            if (c.type !== 'STREAM') {
+                throw 'not handled'
+            }
 
-                    // check if theres a capturing group -- push the value
-                    rootSubject.next(v);
+            const key = c.content;
 
-                    // check if capturing group should be completed
-                    rootSubject.complete();
-                });
+            const subscription = deps[key].subscribe(value => {
+                handleEmission(key, value);
             });
+
+            return {
+                key,
+                subscription
+            }
+        });
+
+        function handleEmission(key, value) {
+            // update log
+            log += key;
+
+            const currentEntry = entries[currentEntryIndex];
+            const matchesCurrentEntry = currentEntry.key == key;
+
+            if (!matchesCurrentEntry) {
+                return;
+            }
+
+            // push the value to the capturing group
+            rootSubject.next(value);
+
+            const shouldMoveOn = true;
+
+            if (shouldMoveOn) {
+                currentEntryIndex += 1;
+            }
+
+            // check if capturing group should be completed
+            if (currentEntryIndex > entries.length - 1) {
+                rootSubject.complete();
+                entries.forEach(e => e.subscription.unsubscribe());
+            }
         }
 
         return rootSubject;

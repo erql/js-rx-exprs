@@ -10,7 +10,12 @@ export interface StreamNode {
     content: StreamKeyType
 }
 
-export type ASTNode = ExpressionNode | StreamNode;
+export interface RepeatNode {
+    type: 'REPEAT',
+    content: StreamNode
+}
+
+export type ASTNode = ExpressionNode | StreamNode | RepeatNode;
 
 export interface AST {
     root: ExpressionNode;
@@ -21,26 +26,3 @@ export interface AST {
 export function parse(expression: ExpressionString): AST {
     throw 'not implemented yet';
 }
-
-
-// EXAMPLES
-
-//  `A`
-export const ast_A: AST = {
-    root: {
-        type: 'EXPRESSION',
-        content: [{ type: 'STREAM', content: 'A' }]
-    }
-};
-
-//  `ABC`
-export const ast_ABC: AST = {
-    root: {
-        type: 'EXPRESSION',
-        content:
-            [ { type: 'STREAM', content: 'A' }
-            , { type: 'STREAM', content: 'B' }
-            , { type: 'STREAM', content: 'C' }
-            ]
-    }
-};
