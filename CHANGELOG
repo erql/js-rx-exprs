@@ -7,5 +7,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.0]
 ### Added
 - stream letters    ABC
-- capturing groups  ()
-- wildcard symbol   *
+- repeat symbol   *

@@ -1,5 +1,11 @@
 # Ideas
 
+## separate regex from it's arguments
+
+```js
+expression('ABC').exec({ A, B, C })
+```
+
 ## use tag fn to create regular expressions
 
 ### Examples

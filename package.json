@@ -1,12 +1,13 @@
 {
-    "name": "rexprs-rxjs",
+    "name": "exprs-rx",
     "version": "0.0.0",
-    "description": "Regular Expressions for RxJS",
+    "description": "Expressions for RxJS",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
     "es2015": "./dist/es2015/index.js",
     "types": "./dist/types/index.d.ts",
-    "unpkg": "./dist/rexprs-rxjs.min.js",
+    "unpkg": "./dist/exprs-rx.min.js",
+    "sideEffects": false,
     "scripts": {
         "clean": "rimraf temp dist",
         "build": "npm run build:esm && npm run build:es2015 && npm run build:cjs && npm run build:types && npm run build:umd && npm run build:umd:min",
@@ -14,14 +15,31 @@
         "build:es2015": "tsc -p configs/tsconfig.es2015.json",
         "build:cjs": "tsc -p configs/tsconfig.cjs.json",
         "build:types": "tsc -p configs/tsconfig.types.json",
-        "build:umd": "webpack --config configs/webpack.build.js -o dist/rexprs-rxjs.js",
-        "build:umd:min": "webpack --config configs/webpack.build.min.js -o dist/rexprs-rxjs.min.js",
+        "build:umd": "webpack --config configs/webpack.build.js -o dist/exprs-rx.js",
+        "build:umd:min": "webpack --config configs/webpack.build.min.js -o dist/exprs-rx.min.js",
         "test": "jest",
         "test:watch": "jest --watch",
         "test:debug": "node --inspect node_modules/.bin/jest --watch --runInBand"
     },
     "author": "Kostia Palchyk",
     "license": "MIT",
+    "keywords": [
+        "rxjs",
+        "regexp"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/expressions-for-reactive-streams/js-rx-exprs.git"
+    },
+    "bugs": {
+        "url": "https://github.com/expressions-for-reactive-streams/js-rx-exprs/issues"
+    },
+    "homepage": "https://github.com/expressions-for-reactive-streams/js-rx-exprs#readme",
+    "files": [
+        "dist",
+        "CHANGELOG",
+        "README.md"
+    ],
     "peerDependencies": {
         "rxjs": "^6.5.3"
     },

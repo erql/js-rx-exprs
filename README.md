@@ -1,9 +1,28 @@
-# Regular Expressions for reactive streams
+# Regular Expressions for reactive streams in RxJS
 
-RxJS implementation of [Regular EXPressions for Reactive Streams](../rexprs-spec)
+RxJS implementation of [Regular Expressions for Reactive Streams](../spec-regular-expressions)
 
-## Intro
+## Install
 
+```
+npm i exprs-rx
+```
+
+## Use
+
+```js
+import { exec } from 'exprs-rx';
+
+// const A = ...
+// const B = ...
+// const C = ...
+
+exec('AB*C', { A, B, C })
+    .pipe(
+        // ...
+    )
+    .subscribe(console.log);
+```
 
 
 
