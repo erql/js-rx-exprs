@@ -16,19 +16,28 @@ npm i exprs-rx
 
 ## Use
 
+Query `mousemove` events after `mousedown` and before `mouseup`
+
 ```js
+import { fromEvent } from 'rxjs'; 
+import { repeat } from 'rxjs/operators';
 import { exec } from 'exprs-rx';
 
-// const A = ...
-// const B = ...
-// const C = ...
+const A = fromEvent(item, 'mousedown');
+const B = fromEvent(document, 'mousemove');
+const C = fromEvent(document, 'mouseup');
 
 exec('AB*C', { A, B, C })
     .pipe(
-        // ...
+        repeat() // repeat the cycle
     )
     .subscribe(console.log);
 ```
+
+Try this example:  
+https://stackblitz.com/edit/rxjs-regular-expressions
+
+## Notes
 
 Currently, the library supports `A` — capital letters that represent a single emission of a corresponding stream.
 
