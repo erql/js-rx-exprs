@@ -1,4 +1,4 @@
-# Regular Expressions for reactive streams in RxJS
+# Regular Expressions for RxJS
 
 RxJS implementation of [Regular Expressions for Reactive Streams](../spec-regular-expressions)
 
