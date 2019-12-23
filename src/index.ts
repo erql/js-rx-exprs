@@ -1,8 +1,3 @@
-/**
- * @file blah blah blah
- * see ../spec for specification
- */
-
 import { Observable, defer } from 'rxjs';
 import { parse } from './ast';
 import { compile } from './compile';
