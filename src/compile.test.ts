@@ -72,7 +72,7 @@ describe('Compilation', () => {
         }));
     });
 
-    xdescribe('AB*C', () => {
+    describe('AB*C', () => {
         test('A*', marbles(m => {
             /**
              *      `A*`

@@ -15,7 +15,7 @@ export interface RepeatNode {
     content: StreamNode
 }
 
-export type ASTNode = ExpressionNode | StreamNode | RepeatNode;
+export type ASTNode = StreamNode | RepeatNode;
 
 export interface AST {
     root: ExpressionNode;
