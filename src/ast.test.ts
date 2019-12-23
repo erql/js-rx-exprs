@@ -29,19 +29,19 @@ describe('Ast', () => {
         });
     })
 
-    test('AB*C', () => {
-        const ast = parse('AB*C');
+    test('XY*Z', () => {
+        const ast = parse('XY*Z');
 
         expect(ast).toEqual({
             root: {
                 type: 'EXPRESSION',
                 content: [
-                    { type: 'STREAM', content: 'A' },
+                    { type: 'STREAM', content: 'X' },
                     {
                         type: 'REPEAT', content:
-                            { type: 'STREAM', content: 'B' }
+                            { type: 'STREAM', content: 'Y' }
                     },
-                    { type: 'STREAM', content: 'C' }
+                    { type: 'STREAM', content: 'Z' }
                 ]
             }
         });

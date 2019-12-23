@@ -43,7 +43,7 @@ function parseGroup(root: ExpressionNode, expression: ExpressionString) {
         return root;
     }
 
-    const match = expression.match(/^([A-F])(\*)?/);
+    const match = expression.match(/^([A-Z])(\*)?/);
 
     if (!match) {
         throw 'invalid expression';
