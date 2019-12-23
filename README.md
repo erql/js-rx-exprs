@@ -2,6 +2,12 @@
 
 RxJS implementation of [Regular Expressions for Reactive Streams](../spec-regular-expressions)
 
+## Intro
+
+"RegExp syntax for Observables: Never Easier!"  
+https://dev.to/kosich/regexp-for-reactive-streams-143g  
+2 min read
+
 ## Install
 
 ```
