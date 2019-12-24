@@ -34,37 +34,42 @@ AB*C
 
 This expression means:
 
-> Take one emission from `A`
-> Then take all emissions from `B`
-> Until `C` emits. Take that one emission from `C` too
+> Take one emission from `A`  
+> Then take all emissions from `B`  
+> Until `C` emits. Take that one emission from `C` too  
 > Then complete
 
 Check out this intro article for more:  
-"RegExp syntax for Observables: Never Easier!"  
+**"RegExp syntax for Observables: Never Easier!"**  
 https://dev.to/kosich/regexp-for-reactive-streams-143g  
-2 min read
+_2 min read_
 
-## Use
+## Usage example
 
-Query `mousemove` events after `mousedown` and before `mouseup`
+Query `mousemove` events after `mousedown` and before `mouseup`  
+(as in a drag-n-drop flow)
 
 ```js
 import { fromEvent } from 'rxjs'; 
 import { repeat } from 'rxjs/operators';
 import { exec } from 'exprs-rx';
 
+// listen to events
 const A = fromEvent(item, 'mousedown');
 const B = fromEvent(document, 'mousemove');
 const C = fromEvent(document, 'mouseup');
 
+// apply a regular expression
 exec('AB*C', { A, B, C })
+    // it returns an Observable
     .pipe(
-        repeat() // repeat the cycle
+        repeat() // repeat the capturing
     )
+    // use the selected events
     .subscribe(console.log);
 ```
 
-Try this example:  
+Try this code in a sandbox:  
 https://stackblitz.com/edit/rxjs-regular-expressions
 
 ## Notes
