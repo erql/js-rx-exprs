@@ -22,7 +22,7 @@ And we want to select only those emissions that happen after A and before C emit
 
 ```
 A  ----o---------------
-B  -.-.--o--o--o---.-.-
+B  -x-x--o--o--o---x-x-
 C  --------------o-----
 ```
 
