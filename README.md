@@ -26,7 +26,7 @@ B  -x-x--o--o--o---x-x-
 C  --------------o-----
 ```
 
-We can do that by applying a following expression:
+We can do that by applying the following expression:
 
 ```
 AB*C
